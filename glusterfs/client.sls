@@ -36,4 +36,9 @@ glusterfs_dir_{{ name }}:
 {%- endfor %}
 {%- endif %}
 
+{%- if grains.oscodename == "trusty" %}
+/etc/init/mounting-glusterfs.conf:
+  file.managed:
+    - source: salt://glusterfs/conf/debian/mounting-glusterfs.conf
+{%- endif %}
 {%- endif %}
